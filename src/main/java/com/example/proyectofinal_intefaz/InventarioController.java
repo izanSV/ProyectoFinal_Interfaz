@@ -24,10 +24,11 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.ResourceBundle;
 
-
+/**
+ * Controlador para la vista del inventario.
+ */
 public class InventarioController implements Initializable {
 
     @FXML
@@ -37,6 +38,11 @@ public class InventarioController implements Initializable {
 
     private ObservableList<Dispositivo> listaDeDispositivos;
 
+    /**
+     * Establece el controlador para el formulario de dispositivos.
+     *
+     * @param dispositivoFormularioController El controlador del formulario de dispositivos.
+     */
     public void setDispositivoFormularioController(DispositivoFormularioController dispositivoFormularioController) {
         this.dispositivoFormularioController = dispositivoFormularioController;
     }
@@ -57,9 +63,11 @@ public class InventarioController implements Initializable {
         listaDeDispositivos.addAll(dispositivo1, dispositivo2, dispositivo3);
 
         dispositivosListView.setItems(listaDeDispositivos);
-
     }
 
+    /**
+     * Maneja el evento de clic en el botón de alta para abrir el formulario de alta de dispositivos.
+     */
     @FXML
     private void altaButtonClick() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DatosDispositivos.fxml"));
@@ -76,25 +84,23 @@ public class InventarioController implements Initializable {
         }
     }
 
-
+    /**
+     * Agrega un dispositivo a la lista de dispositivos.
+     *
+     * @param dispositivo El dispositivo a agregar.
+     */
     public void agregarDispositivo(Dispositivo dispositivo) {
         dispositivosListView.getItems().add(dispositivo);
     }
 
-
-    @FXML
-    private void modificacionButtonClick() {
-
-    }
-
-
+    /**
+     * Maneja el evento de clic en el botón de impresión para imprimir los datos de los dispositivos en un archivo.
+     */
     @FXML
     private void imprimirButtonClick() {
-
         String nombreArchivo = "datos_dispositivos.txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
-
             for (Dispositivo dispositivo : listaDeDispositivos) {
                 writer.write(dispositivo.toString());
                 writer.newLine();
@@ -105,7 +111,9 @@ public class InventarioController implements Initializable {
         }
     }
 
-
+    /**
+     * Maneja el evento de clic en el botón de ordenar para mostrar opciones de ordenación.
+     */
     @FXML
     private void ordenarButtonClick() {
         Stage stage = new Stage();
@@ -131,17 +139,17 @@ public class InventarioController implements Initializable {
         stage.showAndWait();
     }
 
-
+    /**
+     * Ordena la lista de dispositivos por fecha de forma ascendente.
+     */
     private void ordenarAscendente() {
-        // Ordenar la lista de dispositivos por fecha de forma ascendente
         listaDeDispositivos.sort(Comparator.comparing(Dispositivo::getFechaCompra));
     }
 
+    /**
+     * Ordena la lista de dispositivos por fecha de forma descendente.
+     */
     private void ordenarDescendente() {
-        // Ordenar la lista de dispositivos por fecha de forma descendente
         listaDeDispositivos.sort(Comparator.comparing(Dispositivo::getFechaCompra).reversed());
-
     }
-
-
 }
