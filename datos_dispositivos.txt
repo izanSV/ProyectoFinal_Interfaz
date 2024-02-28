@@ -1,0 +1,4 @@
+Dispositivo{identificador=14741, fechaCompra=2020-12-20, precio=500.0, tipoAtributo=IMPRESORA, marca='Marca1', modelo='Modelo1'}
+Dispositivo{identificador=142514, fechaCompra=2014-11-08, precio=300.0, tipoAtributo=ORDENADOR, marca='Marca2', modelo='Modelo2'}
+Dispositivo{identificador=87584, fechaCompra=2017-12-10, precio=100.0, tipoAtributo=PORTATIL, marca='Marca3', modelo='Modelo3'}
+Dispositivo{identificador=452856, fechaCompra=2024-02-02, precio=123.0, tipoAtributo=IMPRESORA, marca='impresora', modelo='modelo'}
